@@ -1,7 +1,7 @@
 /*
 ===========================================================================
 This project distributed under GNU GPLv3
-Copyright (C) 2015 Chabanenko Dmitry
+Copyright (C) 2016 Chabanenko Dmitry
 This file is part of the Tanks GPL Source Code.
 Tanks Source Code is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -36,7 +36,9 @@ void Game::run()
 }
 
 
-Game::Game() : window(sf::VideoMode(width, height), "SFML Tanks", sf::Style::None), gameState(MENU)
+Game::Game() : 
+	window(sf::VideoMode(width, height), "SFML Tanks", sf::Style::None), 
+	gameState(MENU)
 {
 	window.setMouseCursorVisible(false);
 	window.setFramerateLimit(144);

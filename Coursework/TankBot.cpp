@@ -1,7 +1,7 @@
 /*
 ===========================================================================
 This project distributed under GNU GPLv3
-Copyright (C) 2015 Chabanenko Dmitry
+Copyright (C) 2016 Chabanenko Dmitry
 This file is part of the Tanks GPL Source Code.
 Tanks Source Code is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,8 +17,6 @@ along with Tanks Source Code.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include "TankBot.h"
-#include "Tank.h"
-#include <iostream>
 
 
 TankBot::TankBot(sf::Texture& texture) : Tank(texture), time(0), decisionTime(0)
@@ -98,20 +96,20 @@ void TankBot::update(float deltaTime, sf::Vector2f playerPos, sf::Vector2f first
 			sUpgrade.play();
 		}
 
-		upgrade = 1 + rand() % 3;
+		upgrade = 1 + static_cast<si>(rand() % 3);
 
 		switch (upgrade) {
 			case 1:
-				stats.msLevel += 1;
+				stats.msLevel++;
 				break;
 			case 2:
-				stats.asLevel += 1;
+				stats.asLevel++;
 				break;
 			case 3:
-				stats.bsLevel += 1;
+				stats.bsLevel++;
 				break;
 			case 4:
-				stats.armor += 1;
+				stats.armor++;
 				break;
 			default:
 				break;
@@ -121,8 +119,8 @@ void TankBot::update(float deltaTime, sf::Vector2f playerPos, sf::Vector2f first
 	float angle = atan2(tankPos.y - playerPos.y, tankPos.x - playerPos.x) * 180 / PI + 270;
 
 	if (abs(tankBodyAngle - angle) < 30 || abs(tankBodyAngle - angle) > 330) {
-		tankGun.setRotation(angle);
 		if (playerLife) {
+			tankGun.setRotation(angle);
 			switcher.shoot = true;
 		}
 		else {
@@ -133,8 +131,9 @@ void TankBot::update(float deltaTime, sf::Vector2f playerPos, sf::Vector2f first
 		switcher.shoot = false;
 	}
 
+
 	if (decisionTime <= 0) {
-		decisionTime = (100 + static_cast <float> (rand() % 3000)) / 10;
+		decisionTime = (100 + static_cast<float>(rand() % 3000)) / 10;
 		decision = 1 + rand() % 4;
 		time = 0;
 		if (rand() % 2) {
