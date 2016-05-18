@@ -19,7 +19,11 @@ along with Tanks Source Code.  If not, see <http://www.gnu.org/licenses/>.
 #include "TankBot.h"
 
 
-TankBot::TankBot(sf::Texture& texture) : Tank(texture), time(0), decisionTime(0)
+TankBot::TankBot(sf::Texture& texture) : 
+	Tank(texture), 
+	time(0), 
+	decisionTime(0),
+	switcher(false, false, false, false, false)
 {
 	tankBody.setPosition(1420, 500);
 	tankGun.setPosition(1420, 500);

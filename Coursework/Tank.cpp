@@ -27,7 +27,8 @@ Tank::Tank(sf::Texture& texture) :
 	respawnTime(3000),
 	secondCounterOne(0),
 	secondCounterTwo(0),
-	rotate(false)
+	rotate(false),
+	stats(100, 0, 100, 1, 1, 1, false)
 {
 	si r, g, b;
 

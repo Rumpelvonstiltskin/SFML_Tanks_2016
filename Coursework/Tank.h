@@ -37,13 +37,23 @@ public:
 	float getGunRotation();
 public:
 	struct stats {
-		si healingPoints = 100;
-		si armor = 0;
-		si gold = 100;
-		si msLevel = 1;
-		si asLevel = 1;
-		si bsLevel = 1;
+		si healingPoints;
+		si armor;
+		si gold;
+		si msLevel;
+		si asLevel;
+		si bsLevel;
 		bool upgradeAvailability = false;
+		stats(si healingPoints, si armor, si gold, si msLevel, si asLevel, si bsLevel, bool upgradeAvailability)
+		{
+			this->healingPoints = healingPoints;
+			this->armor = armor;
+			this->gold = gold;
+			this->msLevel = msLevel;
+			this->asLevel = asLevel;
+			this->bsLevel = bsLevel;
+			this->upgradeAvailability = upgradeAvailability;
+		}
 	} stats;
 
 

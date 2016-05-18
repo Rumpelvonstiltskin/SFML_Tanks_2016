@@ -59,7 +59,7 @@ Game::Game() :
 	musicTheme.setVolume(menu->musicVolumeState * 10);
 	musicTheme.setLoop(true);
 
-	sf::View view(sf::FloatRect(0, 0, 1920, 1080));		// game area we need to display
+	sf::View view(sf::FloatRect(0, 0, 1920, 1080));		// design area
 	window.setView(view);
 }
 

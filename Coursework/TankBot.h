@@ -33,6 +33,15 @@ public:
 		bool rotateRight = false;
 		bool rotateLeft = false;
 		bool shoot = false;
+
+		switchers(bool moveForward, bool moveBackward, bool rotateRight, bool rotateLeft, bool shoot)
+		{
+			this->moveBackward = moveBackward;
+			this->moveForward = moveForward;
+			this->rotateRight = rotateRight;
+			this->rotateLeft = rotateLeft;
+			this->shoot = shoot;
+		}
 	} switcher;
 private:
 	enum decisions {
