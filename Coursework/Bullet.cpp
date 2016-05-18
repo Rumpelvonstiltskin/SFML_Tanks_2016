@@ -63,7 +63,9 @@ void Bullet::update(float deltaTime, sf::Vector2f tankEnemyPos)
 	bullet.move(dx * deltaTime, dy * deltaTime);
 	delayTime -= deltaTime;
 
-	if (OUTSIDE_AREA) life = false;
+	if (bulletPos.x > 1920 || bulletPos.x < 0 || 
+		bulletPos.y < 0 || bulletPos.y > 1080) 
+		life = false;
 }
 
 sf::Vector2f Bullet::getPosition()

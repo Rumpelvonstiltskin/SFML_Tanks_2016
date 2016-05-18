@@ -25,11 +25,6 @@ enum gameStates {
 
 #define PI 3.14159265
 
-#define OUTSIDE_AREA bulletPos.x > 1920 || bulletPos.x < 0 || bulletPos.y < 0 || bulletPos.y > 1080
-#define CURSOR_PICKER_ZONE (mousePos.y > 840) || (pow(mousePos.x - 960, 2) / 3450306 + pow(mousePos.y + 120, 2) / 67600 <= 1)
-#define BATTLE_ZONE (mousePos.y < 840) && (pow(mousePos.x - 960, 2) / 3450306 + pow(mousePos.y + 120, 2) / 67600 >= 1)
-#define UPGRADE_AREA tankPos.x > 70 && tankPos.x < 100 && tankPos.y > 525 && tankPos.y < 555
-
 #define SECOND 1000
 #define MOUSE_HIDE_DELAY_TIME 500
 #define UPGRADE_DELAY_TIME 300
@@ -41,4 +36,3 @@ enum gameStates {
 #define LEFT_BORDER_X 75
 #define RIGHT_BORDER_X 1845
 #define LOWER_BORDER_Y 767.5
-#define HIGHER_BORDER_Y 260 * sqrt(1 - pow(tankPos.x - 960, 2) / 3450306) - 50

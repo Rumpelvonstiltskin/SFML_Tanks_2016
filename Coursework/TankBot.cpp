@@ -248,9 +248,11 @@ void TankBot::update(float deltaTime, sf::Vector2f playerPos, sf::Vector2f first
 		tankGun.setPosition(RIGHT_BORDER_X, tankPos.y);
 	}
 
-	if (tankPos.y < HIGHER_BORDER_Y) {
-		tankBody.setPosition(tankPos.x, HIGHER_BORDER_Y + 0.1);
-		tankGun.setPosition(tankPos.x, HIGHER_BORDER_Y + 0.1);
+	float higher_border_y = 260 * sqrt(1 - pow(tankPos.x - 960, 2) / 3450306) - 50;
+
+	if (tankPos.y < higher_border_y) {
+		tankBody.setPosition(tankPos.x, higher_border_y);
+		tankGun.setPosition(tankPos.x, higher_border_y);
 	}
 
 	if (tankPos.y > LOWER_BORDER_Y) {

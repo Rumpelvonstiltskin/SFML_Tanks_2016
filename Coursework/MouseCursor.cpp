@@ -29,7 +29,8 @@ MouseCursor::MouseCursor(sf::Texture& texture) : hideDelayTime(0)
 
 void MouseCursor::update(float deltaTime, sf::Vector2f& mousePos)
 {
-	if (CURSOR_PICKER_ZONE) {
+	if ((mousePos.y > 840) || (pow(mousePos.x - 960, 2) / 3450306 + 
+		pow(mousePos.y + 120, 2) / 67600 <= 1)) {
 		showCursor = true;
 		pickerCursor.setPosition(mousePos.x, mousePos.y);
 		pickerCursor.setColor(sf::Color::White);

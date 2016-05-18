@@ -106,7 +106,8 @@ void Tank::update(float deltaTime, sf::Vector2f botPos, bool enemyHit, si sfxVol
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 		if (bulletDelayTime >= 1000 - 100 * stats.asLevel) {
-			if (BATTLE_ZONE) {
+			if ((mousePos.y < 840) && (pow(mousePos.x - 960, 2) / 3450306 
+				 + pow(mousePos.y + 120, 2) / 67600 >= 1)) {
 				bullets.push_back(new Bullet(bulletTexture, tankGun.getPosition(), tankGun.getRotation(), stats.bsLevel));
 				if (shotSoundDelayTime > 100 && life == true) {
 					shot.setVolume(sfxVolumeState * 10);
@@ -172,7 +173,8 @@ void Tank::update(float deltaTime, sf::Vector2f botPos, bool enemyHit, si sfxVol
 		secondCounterOne = 0;
 	}
 
-	if (UPGRADE_AREA) {
+	if (tankPos.x > 70 && tankPos.x < 100 && 
+		tankPos.y > 525 && tankPos.y < 555) {
 		stats.upgradeAvailability = true;
 	}
 	else {
@@ -248,9 +250,11 @@ void Tank::update(float deltaTime, sf::Vector2f botPos, bool enemyHit, si sfxVol
 		tankGun.setPosition(LEFT_BORDER_X, tankPos.y);
 	}
 
-	if (tankPos.y < HIGHER_BORDER_Y) {
-		tankBody.setPosition(tankPos.x, HIGHER_BORDER_Y + 0.1);
-		tankGun.setPosition(tankPos.x, HIGHER_BORDER_Y + 0.1);
+	float higher_border_y = 260 * sqrt(1 - pow(tankPos.x - 960, 2) / 3450306) - 50;
+
+	if (tankPos.y < higher_border_y) {
+		tankBody.setPosition(tankPos.x, higher_border_y);
+		tankGun.setPosition(tankPos.x, higher_border_y);
 	}
 
 	if (tankPos.y > LOWER_BORDER_Y) {
