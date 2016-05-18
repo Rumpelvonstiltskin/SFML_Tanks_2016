@@ -9,7 +9,7 @@ This sourse release contains game data in Coursework/Resourses
 
 Compiling on win32:
 -------------------
-A Visual Studio 2013 project is provided in main folder
+A Visual Studio 2015 project is provided in main folder
 
 Make sure you have have installed SFML version 2.3 in C:/SFML-2.3
 If path does not match with requirement, change lib paths in Game.h and include path in Additional Include Directories in prorepties to the right order
