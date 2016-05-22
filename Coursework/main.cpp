@@ -32,9 +32,10 @@ along with Tanks Source Code.  If not, see <http://www.gnu.org/licenses/>.
 int width = 1920;
 int height = 1080;
 
-#ifdef _WIN32
+
 void GetDesktopResolution(int& horizontal, int& vertical)
 {
+#ifdef _WIN32
 	RECT desktop;
 
 	const HWND hDesktop = GetDesktopWindow();
@@ -42,23 +43,22 @@ void GetDesktopResolution(int& horizontal, int& vertical)
 
 	horizontal = desktop.right;
 	vertical = desktop.bottom;
-}
-#endif
-
-int main()
-{
-	srand(time(0));
-
-#ifdef _WIN32
-	GetDesktopResolution(width, height);
 #endif
 
 #ifdef __unix__
 	Display* d = XOpenDisplay(NULL);
 	Screen*  s = DefaultScreenOfDisplay(d);
-	width = s->width;
-	height = s->height;
+	horizontal = s->width;
+	vertical = s->height;
 #endif
+}
+
+
+int main()
+{
+	srand(time(0));
+
+	GetDesktopResolution(width, height);
 
 	Game game;
 	game.run();

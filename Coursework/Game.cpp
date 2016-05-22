@@ -40,6 +40,7 @@ Game::Game() :
 	window(sf::VideoMode(width, height), "SFML Tanks", sf::Style::None), 
 	gameState(MENU)
 {
+	window.
 	window.setMouseCursorVisible(false);
 	window.setFramerateLimit(144);
 

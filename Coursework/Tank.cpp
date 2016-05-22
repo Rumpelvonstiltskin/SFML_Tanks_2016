@@ -109,7 +109,8 @@ void Tank::update(float deltaTime, sf::Vector2f botPos, bool enemyHit, si sfxVol
 		if (bulletDelayTime >= 1000 - 100 * stats.asLevel) {
 			if ((mousePos.y < 840) && (pow(mousePos.x - 960, 2) / 3450306 
 				 + pow(mousePos.y + 120, 2) / 67600 >= 1)) {
-				bullets.push_back(new Bullet(bulletTexture, tankGun.getPosition(), tankGun.getRotation(), stats.bsLevel));
+				bullets.push_back(new Bullet(bulletTexture, tankGun.getPosition(), 
+								  tankGun.getRotation(), stats.bsLevel));
 				if (shotSoundDelayTime > 100 && life == true) {
 					shot.setVolume(sfxVolumeState * 10);
 					shot.play();
@@ -231,13 +232,19 @@ void Tank::update(float deltaTime, sf::Vector2f botPos, bool enemyHit, si sfxVol
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-		tankBody.move(movementSpeed * sin(tankBodyAngle) * deltaTime, -movementSpeed * cos(tankBodyAngle) * deltaTime);
-		tankGun.move(movementSpeed * sin(tankBodyAngle) * deltaTime, -movementSpeed * cos(tankBodyAngle) * deltaTime);
+		tankBody.move(movementSpeed * sin(tankBodyAngle) * deltaTime, 
+					  -movementSpeed * cos(tankBodyAngle) * deltaTime);
+
+		tankGun.move(movementSpeed * sin(tankBodyAngle) * deltaTime, 
+					 -movementSpeed * cos(tankBodyAngle) * deltaTime);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-		tankBody.move(-movementSpeed * sin(tankBodyAngle) * deltaTime, movementSpeed * cos(tankBodyAngle) * deltaTime);
-		tankGun.move(-movementSpeed * sin(tankBodyAngle) * deltaTime, movementSpeed * cos(tankBodyAngle) * deltaTime);
+		tankBody.move(-movementSpeed * sin(tankBodyAngle) * deltaTime, 
+					  movementSpeed * cos(tankBodyAngle) * deltaTime);
+
+		tankGun.move(-movementSpeed * sin(tankBodyAngle) * deltaTime, 
+					 movementSpeed * cos(tankBodyAngle) * deltaTime);
 	}
 
 	// collision

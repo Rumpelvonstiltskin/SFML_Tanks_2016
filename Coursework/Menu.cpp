@@ -19,7 +19,9 @@ along with Tanks Source Code.  If not, see <http://www.gnu.org/licenses/>.
 #include "Menu.h"
 
 
-Menu::Menu() : selectedItemIndexMenu(0), selectedItemIndexOptions(4)
+Menu::Menu() : 
+	selectedItemIndexMenu(0), 
+	selectedItemIndexOptions(4)
 {
 	if (!menuItems.loadFromFile("Resources//Squares.otf")) {
 		exit(1);
